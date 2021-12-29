@@ -1,7 +1,11 @@
 import React from "react";
-// import { BrowserRouter, Link } from "react-router-dom";
 import "./App.css";
+import Routes from "./routes";
 
 export default function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Routes />
+    </div>
+  );
 }
