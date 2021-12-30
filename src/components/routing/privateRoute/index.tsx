@@ -7,7 +7,7 @@ interface PrivateRouteProps extends RouteProps {
   isPublic?: boolean;
 }
 
-export default function Privateroute({
+export default function PrivateRoute({
   isAuthenticated,
   redirectTo,
   isPublic = false,
