@@ -102,3 +102,5 @@ class WordService extends BaseHttpService implements IWordService {
     }
   }
 }
+
+export const wordService = new WordService();
