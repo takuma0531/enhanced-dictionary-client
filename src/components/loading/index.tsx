@@ -1,6 +1,10 @@
 import React from "react";
-import "./Loading.css";
+import styled from "styled-components";
 
 export default function Loading() {
-  return <div className="loading">Now loading...</div>;
+  return (
+    <LoadingContainer className="loading">Now loading...</LoadingContainer>
+  );
 }
+
+const LoadingContainer = styled.div``;

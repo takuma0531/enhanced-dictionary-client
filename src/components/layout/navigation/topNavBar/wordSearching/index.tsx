@@ -1,6 +1,12 @@
 import React from "react";
-import "./WordSearching.css";
+import styled from "styled-components";
 
-export default function wordSearching() {
-  return <div className="wordSearching">word searching</div>;
+export default function WordSearching() {
+  return (
+    <WordSearchingContainer className="wordSearching">
+      word searching
+    </WordSearchingContainer>
+  );
 }
+
+const WordSearchingContainer = styled.div``;

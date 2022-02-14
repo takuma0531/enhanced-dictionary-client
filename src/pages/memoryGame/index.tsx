@@ -1,6 +1,12 @@
 import React from "react";
-import "./MemoryGame.css";
+import styled from "styled-components";
 
 export default function MemoryGame() {
-  return <div className="memoryGame">{/* memory game component */}</div>;
+  return (
+    <MemoryGameContainer className="memoryGame">
+      {/* memory game component */}
+    </MemoryGameContainer>
+  );
 }
+
+const MemoryGameContainer = styled.div``;

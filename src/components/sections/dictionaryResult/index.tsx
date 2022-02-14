@@ -1,5 +1,5 @@
 import React from "react";
-import "./DictionaryResult.css";
+import styled from "styled-components";
 
 interface Props {
   title: string;
@@ -8,10 +8,12 @@ interface Props {
 
 export default function DictionaryResult({ title, text }: Props): JSX.Element {
   return (
-    <div className={"dictionaryResult"}>
+    <DictionaryResultContainer className={"dictionaryResult"}>
       {title}
       ------
       {text}
-    </div>
+    </DictionaryResultContainer>
   );
 }
+
+const DictionaryResultContainer = styled.div``;

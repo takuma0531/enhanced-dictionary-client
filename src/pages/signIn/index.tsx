@@ -1,6 +1,8 @@
 import React from "react";
-import "./SignIn.css";
+import styled from "styled-components";
 
 export default function SignIn() {
-  return <div className="signIn"></div>;
+  return <SignInContainer className="signIn"></SignInContainer>;
 }
+
+const SignInContainer = styled.div``;

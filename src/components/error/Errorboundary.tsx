@@ -1,5 +1,5 @@
 import React, { ErrorInfo } from "react";
-import "./ErrorBoundary.css";
+import styled from "styled-components";
 
 interface Props {}
 
@@ -31,12 +31,14 @@ export default class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="errorBoundary">
+        <ErrorBoundaryContainer className="errorBoundary">
           <h2>Something went wrong</h2>
           {/* <details></details> */}
-        </div>
+        </ErrorBoundaryContainer>
       );
     }
     return this.props.children;
   }
 }
+
+const ErrorBoundaryContainer = styled.div``;

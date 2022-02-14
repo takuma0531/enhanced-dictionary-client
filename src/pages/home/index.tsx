@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import styled from "styled-components";
 import TopNavBar from "@/components/layout/navigation/topNavBar";
 import WordSearching from "@/components/layout/navigation/topNavBar/wordSearching";
 import LeftSideNavBar from "@/components/layout/navigation/leftSideNavBar";
@@ -7,7 +7,7 @@ import DictionaryResult from "@/components/sections/dictionaryResult";
 
 export default function Home() {
   return (
-    <div className="home">
+    <HomeContainer className="home">
       <div className="topNavBarWrapper">
         <TopNavBar>
           <WordSearching />
@@ -26,6 +26,8 @@ export default function Home() {
           <DictionaryResult title="Meaning in Detected Language" text="" />
         </div>
       </div>
-    </div>
+    </HomeContainer>
   );
 }
+
+const HomeContainer = styled.div``;
