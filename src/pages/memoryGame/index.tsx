@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import MemoryGameBoard from "@/components/sections/memoryGameBoard";
 
 export default function MemoryGame() {
   return (
     <MemoryGameContainer className="memoryGame">
-      {/* memory game component */}
+      <MemoryGameBoard />
     </MemoryGameContainer>
   );
 }

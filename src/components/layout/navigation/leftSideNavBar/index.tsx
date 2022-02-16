@@ -6,10 +6,10 @@ export default function LeftSideNavBar() {
   return (
     <LeftSideNavBarContainer className="leftSideNavBar">
       <div>
-        <Link to="/">Dictionary</Link> {/* TODO: */}
+        <Link to="/home">Dictionary</Link> {/* TODO: */}
       </div>
       <div>
-        <Link to="/">Memory Game</Link> {/* TODO: */}
+        <Link to="/memory-game">Memory Game</Link> {/* TODO: */}
       </div>
     </LeftSideNavBarContainer>
   );
