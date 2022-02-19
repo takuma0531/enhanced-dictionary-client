@@ -11,3 +11,9 @@ export interface Word {
   dateMemorized?: Date;
   user?: string | User;
 }
+
+export interface WordCard {
+  id: string;
+  orderId: number;
+  text: string;
+}

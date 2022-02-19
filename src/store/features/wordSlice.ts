@@ -8,13 +8,13 @@ import { AsyncThunkTypeWord } from "@/enums/asyncThunkType";
 interface WordState {
   word: Word;
   allWords: Word[];
-  WordsForMemoryGame: Word[];
+  wordsForMemoryGame: Word[];
 }
 
 const initialState: WordState = {
   word: {},
   allWords: [],
-  WordsForMemoryGame: [],
+  wordsForMemoryGame: [],
 };
 
 export const wordSlice = createSlice({
@@ -31,7 +31,7 @@ export const wordSlice = createSlice({
       state: WordState,
       action: PayloadAction<Word[]>
     ) => {
-      state.WordsForMemoryGame = action.payload;
+      state.wordsForMemoryGame = action.payload;
     },
   },
 });
