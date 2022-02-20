@@ -39,6 +39,10 @@ class WebSocket implements IWebSocket {
   public onGameCheck(callback: any): void {
     this._socket?.on(SocketEventNames.GAME_CHECK, callback);
   }
+
+  public onGameFinish(callback: any): void {
+    this._socket?.on(SocketEventNames.GAME_FINISH, callback);
+  }
 }
 
 export const webSocket = new WebSocket();

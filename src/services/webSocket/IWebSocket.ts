@@ -8,4 +8,5 @@ export interface IWebSocket {
   onGameFlip(callback: any): void;
   onGameUnflip(callback: any): void;
   onGameCheck(callback: any): void;
+  onGameFinish(callback: any): void;
 }
