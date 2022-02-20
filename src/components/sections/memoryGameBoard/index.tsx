@@ -16,9 +16,15 @@ export default function MemoryGameBoard() {
     return <MemoryGameCard wordCard={wordCard} />;
   });
 
+  // TODO:
+  const finishGame = () => {
+    console.log("game ends");
+  };
+
   useEffect(() => {
     if (wordsForMemoryGame.length == 0) return;
     webSocket.gameStart(wordsForMemoryGame, setWordCards);
+    webSocket.onGameFinish(finishGame);
   }, [wordsForMemoryGame]);
 
   return (

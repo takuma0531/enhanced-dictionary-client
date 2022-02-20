@@ -20,15 +20,25 @@ export default function MemoryGameCard({ wordCard }: Props) {
   };
 
   const onUnflip = (activeWordCards: WordCard[]) => {
-    setisActive(false);
+    if (!isActive) return;
+    const isFlipped = activeWordCards.some(
+      (activeWordCard: WordCard) => activeWordCard.orderId == wordCard.orderId
+    );
+    if (isFlipped) setisActive(false);
   };
 
   const onGameCheck = (activeWordCards: WordCard[]) => {
-    setIsMatched(true);
+    if (!isActive) return;
+    const isFlipped = activeWordCards.some(
+      (activeWordCard: WordCard) => activeWordCard.orderId == wordCard.orderId
+    );
+    if (isFlipped) setIsMatched(true);
   };
 
   useEffect(() => {
     webSocket.onGameFlip(onFlip);
+    webSocket.onGameUnflip(onUnflip);
+    webSocket.onGameCheck(onGameCheck);
   }, []);
 
   return (
