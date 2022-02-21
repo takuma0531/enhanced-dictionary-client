@@ -4,7 +4,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { getWordsForMemoryGame } from "@/store/features/wordSlice";
 
 // subject to change TODO:
-export default function MemoryGameSettingsModal() {
+export default function MemoryGameSettingsModalContent() {
   const dispatch = useAppDispatch();
   const [numberOfPairs] = useState<number>(5);
 

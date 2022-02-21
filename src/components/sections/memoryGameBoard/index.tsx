@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "@/store/hooks";
 import { selectWord } from "@/store/features/wordSlice";
 import MemoryGameCard from "./MemoryGameCard";
-import MemoryGameSettingsModal from "@/components/layout/modal/memoryGameSettingsModal";
+import ModalWrapper from "@/components/layout/modal";
+import MemoryGameSettingsModalContent from "@/components/layout/modal/contents/memoryGameSettingsModalContent";
 import { WordCard } from "@/typings/models/word";
 import { webSocket } from "@/services/webSocket/WebSocket";
 
@@ -11,6 +12,8 @@ import { webSocket } from "@/services/webSocket/WebSocket";
 export default function MemoryGameBoard() {
   const { wordsForMemoryGame } = useAppSelector(selectWord);
   const [wordCards, setWordCards] = useState<WordCard[]>([]);
+  const toggleVisibilityOfMemoryGameSettingsModal = useRef<any>
+  ();
 
   const renderWordCards = wordCards.map((wordCard: WordCard) => {
     return <MemoryGameCard wordCard={wordCard} />;
@@ -19,6 +22,10 @@ export default function MemoryGameBoard() {
   // TODO:
   const finishGame = () => {
     console.log("game ends");
+    // after game ends,
+    // congratulation modal to be added later for 3s
+    // open the modal to set up new game or some button appeared for it
+    toggleVisibilityOfMemoryGameSettingsModal.current(open);
   };
 
   useEffect(() => {
@@ -29,7 +36,13 @@ export default function MemoryGameBoard() {
 
   return (
     <MemoryGameBoardContainer>
-      <MemoryGameSettingsModal />
+      {/* modal for game settings */}
+      <ModalWrapper
+        toggleVisibility={toggleVisibilityOfMemoryGameSettingsModal}
+      >
+        <MemoryGameSettingsModalContent />
+      </ModalWrapper>
+      {/* modal for congratulation at game end */}
       {renderWordCards}
     </MemoryGameBoardContainer>
   );
