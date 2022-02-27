@@ -44,9 +44,8 @@ export default function MemoryGameCard({ wordCard }: Props) {
   return (
     <MemoryGameCardContainer
       onClick={click}
-      className={[isActive ? "active" : "", isMatched ? "matched" : ""].join(
-        " "
-      )}
+      isActive={isActive}
+      isMatched={isMatched}
     >
       <div className="back"></div>
       <div className="front">{wordCard.text}</div>
@@ -54,4 +53,32 @@ export default function MemoryGameCard({ wordCard }: Props) {
   );
 }
 
-const MemoryGameCardContainer = styled.div``;
+// TODO: subject to change, note: possible to use style object with nested object?
+const MemoryGameCardContainer = styled.div<{
+  isActive: boolean;
+  isMatched: boolean;
+}>`
+  position: relative;
+  cursor: pointer;
+  perspective: 1000px;
+  transformstyle: preserve-3d;
+  transition: transform 0.5s;
+  transform: ${({ isActive }) => isActive && "rotateY(180deg)"};
+  visibility: ${({ isMatched }) => isMatched && "hidden"};
+
+  .front,
+  .back {
+    width: 90%;
+    height: 100%;
+    padding: 3px;
+    position: absolute;
+    border-radius: 10px;
+    background: #7dcc8780;
+    backface-visibility: hidden;
+    margin: auto;
+  }
+
+  .front {
+    transform: rotateY(180deg);
+  }
+`;
