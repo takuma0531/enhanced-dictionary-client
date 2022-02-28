@@ -16,6 +16,7 @@ export default function MemoryGameCard({ wordCard }: Props) {
   };
 
   const onFlip = (wordCardOrderId: number) => {
+    if (wordCardOrderId != wordCard.orderId) return;
     wordCardOrderId == wordCard.orderId && setisActive(true);
   };
 

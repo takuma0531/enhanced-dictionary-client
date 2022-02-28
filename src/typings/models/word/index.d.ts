@@ -1,6 +1,7 @@
 import { User } from "../user";
 
 export interface Word {
+  id?: string;
   detectedText?: string;
   definition?: string;
   detectedLanguage?: string;
