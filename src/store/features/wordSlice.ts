@@ -68,10 +68,10 @@ const thunkFunctions = {
       dispatch(updateWordState(updatedWord));
     }
   ),
-  incrementCountOfWordPlayed: createAsyncThunk(
+  incrementCountOfWordsPlayed: createAsyncThunk(
     AsyncThunkTypeWord.INCREMENTING_COUNT_OF_WORD_PLAYED,
-    async (wordId: string) => {
-      await wordService.incrementCountOfWordPlayed(wordId);
+    async (words: Word[]) => {
+      await wordService.incrementCountOfWordsPlayed(words);
     }
   ),
   refreshCountOfWordPlayed: createAsyncThunk(
@@ -93,7 +93,7 @@ export const {
   getAllWords,
   getWordsForMemoryGame,
   updateWord,
-  incrementCountOfWordPlayed,
+  incrementCountOfWordsPlayed,
   refreshCountOfWordPlayed,
   deleteWord,
 } = thunkFunctions;

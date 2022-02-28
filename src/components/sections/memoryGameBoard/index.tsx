@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
-import { selectWord } from "@/store/features/wordSlice";
+import {
+  selectWord,
+  incrementCountOfWordsPlayed,
+} from "@/store/features/wordSlice";
 import MemoryGameCard from "./MemoryGameCard";
 import ModalWrapper from "@/components/layout/modal";
 import {
@@ -24,7 +27,7 @@ export default function MemoryGameBoard() {
   });
 
   const finishGame = () => {
-    // dispatch a request for incrementing the count of words played TODO:
+    dispatch(incrementCountOfWordsPlayed(wordsForMemoryGame));
     toggleVisibilityOfFinishGameMessageModal.current(open);
   };
 

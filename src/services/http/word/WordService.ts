@@ -67,11 +67,12 @@ class WordService extends BaseHttpService implements IWordService {
     }
   }
 
-  public async incrementCountOfWordPlayed(wordId: string): Promise<Word> {
+  public async incrementCountOfWordsPlayed(words: Word[]): Promise<Word> {
     try {
       this.setToken();
       const { data } = await this.axiosApi.put<Word>(
-        `${this.BASE_ROUTE}/ ${URL_PATH.USER}/${URL_PATH.INCREMENTING_COUNT_OF_WORD_PLAYED}?${QUERY_STRING.WORD_ID}=${wordId}`
+        `${this.BASE_ROUTE}/ ${URL_PATH.USER}/${URL_PATH.INCREMENTING_COUNT_OF_WORD_PLAYED}`,
+        words
       );
       return data;
     } catch (err) {
