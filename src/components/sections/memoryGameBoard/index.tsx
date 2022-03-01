@@ -47,10 +47,21 @@ export default function MemoryGameBoard() {
       <ModalWrapper
         toggleVisibility={toggleVisibilityOfMemoryGameSettingsModal}
       >
-        <MemoryGameSettingsModalContent />
+        <MemoryGameSettingsModalContent
+          onClose={() =>
+            toggleVisibilityOfMemoryGameSettingsModal.current(close)
+          }
+        />
       </ModalWrapper>
       <ModalWrapper toggleVisibility={toggleVisibilityOfFinishGameMessageModal}>
-        <FinishGameMessageModalContent />
+        <FinishGameMessageModalContent
+          onClose={() =>
+            toggleVisibilityOfFinishGameMessageModal.current(close)
+          }
+          onOpenMemoryGameSettingsModal={() =>
+            toggleVisibilityOfMemoryGameSettingsModal.current(open)
+          }
+        />
       </ModalWrapper>
       {renderWordCards}
     </MemoryGameBoardContainer>

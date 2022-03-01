@@ -3,8 +3,11 @@ import styled from "styled-components";
 import { useAppDispatch } from "@/store/hooks";
 import { getWordsForMemoryGame } from "@/store/features/wordSlice";
 
-// subject to change TODO:
-export default function MemoryGameSettingsModalContent() {
+interface Props {
+  onClose: any;
+}
+
+export default function MemoryGameSettingsModalContent({ onClose }: Props) {
   const dispatch = useAppDispatch();
   const [numberOfPairs] = useState<number>(5);
 
@@ -21,6 +24,7 @@ export default function MemoryGameSettingsModalContent() {
   > = async (e) => {
     e.preventDefault();
     await dispatch(getWordsForMemoryGame(numberOfPairs));
+    onClose;
   };
 
   return (
