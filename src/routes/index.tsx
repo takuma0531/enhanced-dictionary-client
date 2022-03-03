@@ -1,14 +1,14 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import PrivateRoute from "@/components/routing/privateRoute";
 import Loading from "@/components/loading";
 import { Home, MemoryGame, SignIn } from "@/pages";
 import { RoutePath } from "@/enums/routePath";
+import { useAppSelector } from "@/store/hooks";
+import { selectAuth } from "@/store/features/authSlice";
 
 export default function Routes() {
-  const isAuthenticated = false; // TODO:
-
-  useEffect(() => {}, []);
+  const { isAuthenticated } = useAppSelector(selectAuth);
 
   return (
     <BrowserRouter>
