@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface Props {
   title: string;
-  text: string;
+  text: string | undefined;
 }
 
 export default function DictionaryResult({ title, text }: Props): JSX.Element {

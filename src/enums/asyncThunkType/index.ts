@@ -13,4 +13,5 @@ export enum AsyncThunkTypeWord {
   INCREMENTING_COUNT_OF_WORD_PLAYED = "word/incrementCountOfWordPlayed",
   REFRESHING_COUNT_OF_WORD_PLAYED = "word/refreshCountOfWordPlayed",
   DELETE_WORD = "word/deleteWord",
+  SEARCH_WORD = "word/searchWord",
 }

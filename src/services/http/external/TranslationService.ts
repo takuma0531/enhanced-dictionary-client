@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Word } from "@/typings/models/word";
 
-// TODO: will be consumed in store
 class TranslationService {
   private readonly baseUrl = process.env.REACT_APP_TRANSLATION_URL;
 

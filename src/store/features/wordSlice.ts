@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { wordService } from "@/services/http";
+import {
+  wordService,
+  definitionService,
+  translationService,
+} from "@/services/http";
 import { Word } from "@/typings/models/word";
 import { AsyncThunkTypeWord } from "@/enums/asyncThunkType";
 
-// provisional
 interface WordState {
   word: Word;
   allWords: Word[];
@@ -39,7 +42,7 @@ export const wordSlice = createSlice({
 export const { updateWordState, updateAllWords, updateWordsForMemoryGame } =
   wordSlice.actions;
 
-// provisional
+// TODO: Error handling later
 const thunkFunctions = {
   registerWord: createAsyncThunk(
     AsyncThunkTypeWord.REGISTER_WORD,
@@ -86,6 +89,15 @@ const thunkFunctions = {
       await wordService.deleteWord(wordId);
     }
   ),
+  searchWord: createAsyncThunk(
+    AsyncThunkTypeWord.SEARCH_WORD,
+    async (word: Word, { dispatch }) => {
+      let updatedWord: Word;
+      updatedWord = await definitionService.getDefinitionOfWord(word);
+      updatedWord = await translationService.getTranslatedText(updatedWord);
+      dispatch(updateWordState(updatedWord));
+    }
+  ),
 };
 
 export const {
@@ -96,6 +108,7 @@ export const {
   incrementCountOfWordsPlayed,
   refreshCountOfWordPlayed,
   deleteWord,
+  searchWord,
 } = thunkFunctions;
 
 export const selectWord = (state: RootState) => state.word;
