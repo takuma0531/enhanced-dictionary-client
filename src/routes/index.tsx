@@ -1,14 +1,20 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import PrivateRoute from "@/components/routing/privateRoute";
 import Loading from "@/components/loading";
 import { Home, MemoryGame, SignIn } from "@/pages";
 import { RoutePath } from "@/enums/routePath";
-import { useAppSelector } from "@/store/hooks";
-import { selectAuth } from "@/store/features/authSlice";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { selectAuth, checkAuth } from "@/store/features/authSlice";
+import { JwtService } from "@/services/localStorage/JwtService";
 
 export default function Routes() {
   const { isAuthenticated } = useAppSelector(selectAuth);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (JwtService.getToken()) dispatch(checkAuth());
+  }, []);
 
   return (
     <BrowserRouter>
