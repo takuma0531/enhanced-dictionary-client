@@ -19,10 +19,10 @@ export default function WordSearching() {
   return (
     <WordSearchingContainer className="wordSearching">
       <div>
-        <WordSearchingTextBox word={word} setWord={setWord} />
+        <WordSearchingTextBox word={word} setWord={() => setWord(word)} />
         <Button onClick={handleSearching} text="Search" />
       </div>
-      <WordLanguageSwitcher word={word} setWord={setWord} />
+      <WordLanguageSwitcher word={word} setWord={() => setWord(word)} />
     </WordSearchingContainer>
   );
 }

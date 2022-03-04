@@ -18,3 +18,8 @@ export interface WordCard {
   orderId: number;
   text: string;
 }
+
+export interface LanguageInfo {
+  key: string;
+  language: string;
+}
