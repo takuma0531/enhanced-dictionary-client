@@ -1,9 +1,9 @@
-import fs from "fs";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Word, LanguageInfo } from "@/typings/models/word";
 import Button from "@/components/layout/button";
 import Select from "@/components/layout/select";
+import languagesInfo from "public/assets/languages.json";
 
 interface Props {
   word: Word;
@@ -19,12 +19,13 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
     <option value={language.key}>{language.language}</option>
   ));
 
+  const readJsonFile = async () => {
+    setLanguages(languagesInfo);
+  };
+
   useEffect(() => {
-    const languageArray: LanguageInfo[] = JSON.parse(
-      fs.readFileSync("public/assets/languages.json", "utf-8")
-    );
-    setLanguages(languageArray);
-  });
+    readJsonFile();
+  }, []);
 
   return (
     <WordLanguageSwitcherContainer>
