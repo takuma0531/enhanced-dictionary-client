@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Word } from "@/typings/models/word";
+import Button from "@/components/layout/button";
 
 {
   /* TODO: select options defined */
@@ -26,10 +27,10 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
         </select>
       </div>
       <div>
-        {/* TODO: */}
-        <button onClick={handleSwitchingDetectedAndTargetLanguage}>
-          switch button between target and detected language
-        </button>
+        <Button
+          onClick={handleSwitchingDetectedAndTargetLanguage}
+          text={"some icon"}
+        />
       </div>
       <div className="targetLanguage">
         <select value={word.targetLanguage} onChange={() => setWord(word)}>
