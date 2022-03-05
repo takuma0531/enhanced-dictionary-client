@@ -7,6 +7,7 @@ import { Word } from "@/typings/models/word";
 import InputField from "@/components/layout/inputField";
 import WordLanguageSwitcher from "./WordLanguageSwitcher";
 import Button from "@/components/layout/button";
+import { INPUTFIELD, BUTTONTEXT } from "@/enums/formElement";
 
 export default function WordSearching() {
   const { isAuthenticated } = useAppSelector(selectAuth);
@@ -27,12 +28,12 @@ export default function WordSearching() {
       <div>
         <InputField
           isLabelRequired={false}
-          type="text"
+          type={INPUTFIELD.TEXT}
           value={word.detectedText || ""}
           isRequired={false}
           onChange={() => setWord(word)}
         />
-        <Button onClick={handleSearching} text="Search" />
+        <Button onClick={handleSearching} text={BUTTONTEXT.SEARCH} />
       </div>
       <WordLanguageSwitcher word={word} setWord={() => setWord(word)} />
     </WordSearchingContainer>

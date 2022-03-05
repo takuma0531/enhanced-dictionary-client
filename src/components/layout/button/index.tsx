@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface Props {
   text: any;
-  onClick: any;
+  onClick?: any;
 }
 
 export default function Button({ text, onClick }: Props) {
