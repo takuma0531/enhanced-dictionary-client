@@ -15,8 +15,10 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
 
   const handleSwitchingDetectedAndTargetLanguage = () => {};
 
-  const renderLanguageOptions = languages.map((language) => (
-    <option value={language.key}>{language.language}</option>
+  const renderLanguageOptions = languages.map((language, index) => (
+    <option key={index} value={language.key}>
+      {language.language}
+    </option>
   ));
 
   const readJsonFile = async () => {
