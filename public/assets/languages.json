@@ -1,90 +1,90 @@
 [
   {
-    "key": "en",
+    "value": "en",
     "language": "English"
   },
   {
-    "key": "ar",
+    "value": "ar",
     "language": "Arabic"
   },
   {
-    "key": "zh",
+    "value": "zh",
     "language": "Chinese"
   },
   {
-    "key": "nl",
+    "value": "nl",
     "language": "Dutch"
   },
   {
-    "key": "fi",
+    "value": "fi",
     "language": "Finnish"
   },
   {
-    "key": "fr",
+    "value": "fr",
     "language": "French"
   },
   {
-    "key": "de",
+    "value": "de",
     "language": "German"
   },
   {
-    "key": "hi",
+    "value": "hi",
     "language": "Hindi"
   },
   {
-    "key": "hu",
+    "value": "hu",
     "language": "Hungarian"
   },
   {
-    "key": "id",
+    "value": "id",
     "language": "Indonesian"
   },
   {
-    "key": "ga",
+    "value": "ga",
     "language": "Irish"
   },
   {
-    "key": "it",
+    "value": "it",
     "language": "Italian"
   },
   {
-    "key": "ja",
+    "value": "ja",
     "language": "Japanese"
   },
   {
-    "key": "ko",
+    "value": "ko",
     "language": "Korean"
   },
   {
-    "key": "pl",
+    "value": "pl",
     "language": "Polish"
   },
   {
-    "key": "pt",
+    "value": "pt",
     "language": "Portuguese"
   },
   {
-    "key": "ru",
+    "value": "ru",
     "language": "Russian"
   },
   {
-    "key": "es",
+    "value": "es",
     "language": "Spanish"
   },
   {
-    "key": "sv",
+    "value": "sv",
     "language": "Swedish"
   },
   {
-    "key": "tr",
+    "value": "tr",
     "language": "Turkish"
   },
   {
-    "key": "uk",
+    "value": "uk",
     "language": "Ukranian"
   },
   {
-    "key": "vi",
+    "value": "vi",
     "language": "Vietnamese"
   }
 ]

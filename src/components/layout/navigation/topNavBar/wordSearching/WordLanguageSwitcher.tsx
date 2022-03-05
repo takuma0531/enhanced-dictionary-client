@@ -16,7 +16,7 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
   const handleSwitchingDetectedAndTargetLanguage = () => {};
 
   const renderLanguageOptions = languages.map((language, index) => (
-    <option key={index} value={language.key}>
+    <option key={index} value={language.value}>
       {language.language}
     </option>
   ));

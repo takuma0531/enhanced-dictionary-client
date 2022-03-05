@@ -20,6 +20,6 @@ export interface WordCard {
 }
 
 export interface LanguageInfo {
-  key: string;
+  value: string;
   language: string;
 }
