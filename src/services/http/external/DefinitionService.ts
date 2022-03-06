@@ -12,10 +12,7 @@ class DefinitionService {
           headers: { "Content-Type": "application/json" },
         }
       );
-      // TODO: check data sturcture
-      console.log(res);
-
-      word.definition = res.data[0].meanings[0];
+      word.definition = res.data[0].meanings[0].definitions[0].definition;
       return word;
     } catch (err) {
       throw err;

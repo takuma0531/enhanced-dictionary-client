@@ -6,21 +6,18 @@ class TranslationService {
 
   public async getTranslatedText(word: Word): Promise<Word> {
     try {
-      const res = await axios.post(`${this.baseUrl}`, {
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const res = await axios.post(
+        `${this.baseUrl}`,
+        {
           q: word.detectedText,
           source: word.detectedLanguage,
           target: word.targetLanguage,
           format: "text",
-        }),
-      });
-      // TODO: check data sturcture
-      console.log(res);
-
-      word.targetText = res.data.translatedText
-
-      return res.data.translatedText;
+        },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      word.targetText = res.data.translatedText;
+      return word;
     } catch (err) {
       throw err;
     }
