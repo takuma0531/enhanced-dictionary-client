@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { selectAuth } from "@/store/features/authSlice";
-import { searchWord } from "@/store/features/wordSlice";
+import { searchWord, registerWord } from "@/store/features/wordSlice";
 import { Word } from "@/typings/models/word";
 import InputField from "@/components/layout/inputField";
 import WordLanguageSwitcher from "./WordLanguageSwitcher";
@@ -19,8 +19,17 @@ export default function WordSearching() {
     targetLanguage: "ja",
   });
 
+  const inputText = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const copiedWord = { ...word };
+    copiedWord.detectedText = e.target.value;
+    setWord(copiedWord);
+  };
+
   const handleSearching = () => {
-    isAuthenticated && dispatch(searchWord(word));
+    dispatch(searchWord(word));
+    isAuthenticated && dispatch(registerWord(word));
   };
 
   return (
@@ -31,11 +40,11 @@ export default function WordSearching() {
           type={INPUTFIELD.TEXT}
           value={word.detectedText || ""}
           isRequired={false}
-          onChange={() => setWord(word)}
+          onChange={(e) => inputText(e)}
         />
         <Button onClick={handleSearching} text={BUTTONTEXT.SEARCH} />
       </div>
-      <WordLanguageSwitcher word={word} setWord={() => setWord(word)} />
+      <WordLanguageSwitcher word={word} setWord={setWord} />
     </WordSearchingContainer>
   );
 }

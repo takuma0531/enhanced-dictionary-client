@@ -13,7 +13,14 @@ interface Props {
 export default function WordLanguageSwitcher({ word, setWord }: Props) {
   const [languages, setLanguages] = useState<LanguageInfo[]>([]);
 
-  const handleSwitchingDetectedAndTargetLanguage = () => {};
+  const handleSwitchingDetectedAndTargetLanguage = () => {
+    const copiedWord: Word = {
+      detectedText: word.detectedText,
+      detectedLanguage: word.targetLanguage,
+      targetLanguage: word.detectedLanguage,
+    };
+    setWord(copiedWord);
+  };
 
   const renderLanguageOptions = languages.map((language, index) => (
     <option key={index} value={language.value}>
@@ -35,7 +42,7 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
         <Select
           selectValue={word.detectedLanguage}
           onChange={() => {
-            setWord(word);
+            setWord();
           }}
           options={renderLanguageOptions}
         ></Select>
@@ -50,7 +57,7 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
         <Select
           selectValue={word.targetLanguage}
           onChange={() => {
-            setWord(word);
+            setWord();
           }}
           options={renderLanguageOptions}
         ></Select>
