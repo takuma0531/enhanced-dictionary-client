@@ -24,6 +24,28 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
     setWord(copiedWord);
   };
 
+  const handleSwitchingDetectedLanguage = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const copiedWord: Word = {
+      detectedText: word.detectedText,
+      detectedLanguage: e.target.value,
+      targetLanguage: word.targetLanguage,
+    };
+    setWord(copiedWord);
+  };
+
+  const handleSwitchingTargetLanguage = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const copiedWord: Word = {
+      detectedText: word.detectedText,
+      detectedLanguage: word.detectedLanguage,
+      targetLanguage: e.target.value,
+    };
+    setWord(copiedWord);
+  };
+
   const renderLanguageOptions = languages.map((language, index) => (
     <option key={index} value={language.value}>
       {language.language}
@@ -43,9 +65,7 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
       <div className="detectedLanguage">
         <Select
           selectValue={word.detectedLanguage}
-          onChange={() => {
-            setWord();
-          }}
+          onChange={handleSwitchingDetectedLanguage}
           options={renderLanguageOptions}
         ></Select>
       </div>
@@ -60,9 +80,7 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
       <div className="targetLanguage">
         <Select
           selectValue={word.targetLanguage}
-          onChange={() => {
-            setWord();
-          }}
+          onChange={handleSwitchingTargetLanguage}
           options={renderLanguageOptions}
         ></Select>
       </div>
