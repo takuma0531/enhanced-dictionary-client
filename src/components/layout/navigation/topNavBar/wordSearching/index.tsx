@@ -34,19 +34,30 @@ export default function WordSearching() {
 
   return (
     <WordSearchingContainer className="wordSearching">
-      <div>
+      <WordSearchinginputFieldContainer>
         <InputField
           isLabelRequired={false}
           type={INPUTFIELD.TEXT}
           value={word.detectedText || ""}
           isRequired={false}
           onChange={(e) => inputText(e)}
+          placeHolder="Search a word"
         />
         <Button onClick={handleSearching} text={BUTTONTEXT.SEARCH} />
-      </div>
+      </WordSearchinginputFieldContainer>
       <WordLanguageSwitcher word={word} setWord={setWord} />
     </WordSearchingContainer>
   );
 }
 
-const WordSearchingContainer = styled.div``;
+const WordSearchingContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const WordSearchinginputFieldContainer = styled.div`
+  position: relative;
+  display: flex;
+`;

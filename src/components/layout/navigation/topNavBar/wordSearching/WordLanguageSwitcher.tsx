@@ -4,6 +4,8 @@ import { Word, LanguageInfo } from "@/typings/models/word";
 import Button from "@/components/layout/button";
 import Select from "@/components/layout/select";
 import languagesInfo from "public/assets/languages.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   word: Word;
@@ -50,7 +52,9 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
       <div>
         <Button
           onClick={handleSwitchingDetectedAndTargetLanguage}
-          text={"some icon"}
+          text={<FontAwesomeIcon icon={faArrowRightArrowLeft} />}
+          border="none"
+          backgroundColorOnHover="#f3f2ef"
         />
       </div>
       <div className="targetLanguage">
@@ -66,4 +70,9 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
   );
 }
 
-const WordLanguageSwitcherContainer = styled.div``;
+const WordLanguageSwitcherContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;

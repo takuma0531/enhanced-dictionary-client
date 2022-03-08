@@ -10,6 +10,7 @@ interface Props {
   minLength?: number;
   isRequired?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  placeHolder?: string;
 }
 
 export default function InputField({
@@ -21,6 +22,7 @@ export default function InputField({
   minLength,
   isRequired = true,
   onChange,
+  placeHolder = "",
 }: Props) {
   return (
     <InputFieldContainer>
@@ -31,6 +33,7 @@ export default function InputField({
         onChange={onChange}
         required={isRequired}
         minLength={minLength}
+        placeholder={placeHolder}
       />
     </InputFieldContainer>
   );
@@ -40,4 +43,13 @@ const InputFieldContainer = styled.div``;
 
 const Label = styled.label``;
 
-const Input = styled.input``;
+const Input = styled.input`
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 0.5px solid #0000004d;
+  padding: 5px 10px;
+  :focus {
+    outline: none !important;
+    // background: #f3f2ef;
+  }
+`;

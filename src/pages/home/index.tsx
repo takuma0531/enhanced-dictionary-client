@@ -13,8 +13,6 @@ export default function Home() {
   const [wordToRender, setWordToRender] = useState<Word>({});
 
   useEffect(() => {
-    console.log("home page");
-    console.log(word);
     setWordToRender(word);
   }, [word]);
 
@@ -25,25 +23,32 @@ export default function Home() {
           <WordSearching />
         </TopNavBar>
       </div>
-      <div className="leftSideBarWrapper">
-        <LeftSideNavBar />
-      </div>
-      <div className="dictionaryResultSectionWrapper">
-        <div className="resultOfWordInTargetLanguageWrapper">
-          <DictionaryResult
-            title="Word in Target Language"
-            text={wordToRender.targetText}
-          />
+      <HomeBodyContainer>
+        <div className="leftSideBarWrapper">
+          <LeftSideNavBar />
         </div>
-        <div className="resultOfDefinitionInDetectedLanguageWrappper">
-          <DictionaryResult
-            title="Meaning in Detected Language"
-            text={wordToRender.definition}
-          />
+        <div className="dictionaryResultSectionWrapper">
+          <div className="resultOfWordInTargetLanguageWrapper">
+            <DictionaryResult
+              title="Word in Target Language"
+              text={wordToRender.targetText}
+            />
+          </div>
+          <div className="resultOfDefinitionInDetectedLanguageWrappper">
+            <DictionaryResult
+              title="Meaning in Detected Language"
+              text={wordToRender.definition}
+            />
+          </div>
         </div>
-      </div>
+      </HomeBodyContainer>
     </HomeContainer>
   );
 }
 
 const HomeContainer = styled.div``;
+
+const HomeBodyContainer = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+`;

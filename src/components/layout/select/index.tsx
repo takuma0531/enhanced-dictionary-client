@@ -15,4 +15,7 @@ export default function Select({ selectValue, onChange, options }: Props) {
   );
 }
 
-const SelectContainer = styled.select``;
+const SelectContainer = styled.select`
+  border: 0.5px solid #0000004d;
+  border-radius: 10px;
+`;

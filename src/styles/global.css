@@ -1,0 +1,16 @@
+html,
+body,
+#root {
+  padding: 0;
+  margin: 0;
+  background-color: #f3f2ef;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
