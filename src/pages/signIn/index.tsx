@@ -10,6 +10,7 @@ import {
   BUTTONTEXT,
   FORMTITLE,
 } from "@/enums/formElement";
+import { Colors } from "@/enums/Style";
 
 export default function SignIn() {
   const [isSignIn, toggleIsSignIn] = useState(true);
@@ -45,11 +46,11 @@ export default function SignIn() {
         <Button
           text={isSignIn ? BUTTONTEXT.SIGNIN : BUTTONTEXT.SIGNUP}
           borderRadius={"20px"}
-          backgroundColor={"#0a66c2"}
-          backgroundColorOnHover={"#004182"}
+          backgroundColor={Colors.LIGHT_BLUE}
+          backgroundColorOnHover={Colors.DEEP_BLUE}
           fontSize={"16px"}
           fontWeight={"500"}
-          color={"white"}
+          color={Colors.WHITE}
         />
         <GuidingTextToSignInOrUp>
           or {""}
@@ -67,13 +68,13 @@ const SignInContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background-color: white;
+  background-color: ${Colors.WHITE};
   width: 400px;
   border-radius: 10px;
 
   h1 {
     padding-top: 10px;
-    color: #0a66c2;
+    color: ${Colors.LIGHT_BLUE};
     text-align: center;
   }
 `;
@@ -99,9 +100,9 @@ const GuidingTextToSignInOrUp = styled.div`
 
   span {
     cursor: pointer;
-    color: #0a66c2;
+    color: ${Colors.LIGHT_BLUE};
     :hover {
-      color: #004182;
+      color: ${Colors.DEEP_BLUE};
     }
   }
 `;

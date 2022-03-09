@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Colors } from "@/enums/Style";
 
 interface Props {
   name?: string;
@@ -45,16 +46,15 @@ const InputFieldContainer = styled.div`
 `;
 
 const Label = styled.label`
-  color: #00000099;
+  color: ${Colors.GRAY};
 `;
 
 const Input = styled.input`
   font-size: 1rem;
   border-radius: 10px;
-  border: 0.5px solid #0000004d;
+  border: 0.5px solid ${Colors.LIGHT_GRAY};
   padding: 5px 10px;
   :focus {
     outline: none !important;
-    // background: #f3f2ef;
   }
 `;

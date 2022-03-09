@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Colors } from "@/enums/Style";
 
 interface Props {
   children?: JSX.Element;
@@ -27,7 +28,7 @@ export default function TopNavBar({ children }: Props) {
 const TopNavBarContainer = styled.div`
   width: 100%;
   background-color: white;
-  color: #00000099;
+  color: ${Colors.GRAY};
 
   .innerTopNavBar {
     display: flex;
@@ -38,7 +39,7 @@ const TopNavBarContainer = styled.div`
 
     h1 {
       font-size: 1.5rem;
-      color: #0a66c2;
+      color: ${Colors.LIGHT_BLUE};
     }
 
     .ableToInteract {
@@ -47,7 +48,7 @@ const TopNavBarContainer = styled.div`
     }
 
     .ableToInteract:hover {
-      color: #000000e6;
+      color: ${Colors.BLACK};
     }
   }
 `;
