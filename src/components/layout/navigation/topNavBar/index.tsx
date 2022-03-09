@@ -27,7 +27,7 @@ export default function TopNavBar({ children }: Props) {
 
 const TopNavBarContainer = styled.div`
   width: 100%;
-  background-color: white;
+  background-color: ${Colors.WHITE};
   color: ${Colors.GRAY};
 
   .innerTopNavBar {
