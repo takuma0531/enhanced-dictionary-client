@@ -1,4 +1,9 @@
-export enum INPUTFIELD {
+export enum INPUTFEILDNAME {
+  EMAIL = "Email",
+  PASSWORD = "Password",
+}
+
+export enum INPUTFIELDTYPE {
   EMAIL = "email",
   PASSWORD = "password",
   TEXT = "text",

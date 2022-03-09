@@ -39,9 +39,14 @@ export default function InputField({
   );
 }
 
-const InputFieldContainer = styled.div``;
+const InputFieldContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-const Label = styled.label``;
+const Label = styled.label`
+  color: #00000099;
+`;
 
 const Input = styled.input`
   font-size: 1rem;

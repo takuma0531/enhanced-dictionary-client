@@ -4,7 +4,12 @@ import { useAppDispatch } from "@/store/hooks";
 import { registerUser, loginUser } from "@/store/features/authSlice";
 import InputField from "@/components/layout/inputField";
 import Button from "@/components/layout/button";
-import { INPUTFIELD, BUTTONTEXT, FORMTITLE } from "@/enums/formElement";
+import {
+  INPUTFEILDNAME,
+  INPUTFIELDTYPE,
+  BUTTONTEXT,
+  FORMTITLE,
+} from "@/enums/formElement";
 
 export default function SignIn() {
   const [isSignIn, toggleIsSignIn] = useState(true);
@@ -24,24 +29,32 @@ export default function SignIn() {
       <FormContainer onSubmit={(e) => handleSubmitting(e)}>
         <h1>{isSignIn ? FORMTITLE.SIGNIN : FORMTITLE.SIGNUP}</h1>
         <InputField
-          name={INPUTFIELD.EMAIL}
-          type={INPUTFIELD.EMAIL}
+          name={INPUTFEILDNAME.EMAIL}
+          type={INPUTFIELDTYPE.EMAIL}
           value={email}
-          label={INPUTFIELD.EMAIL}
+          label={INPUTFEILDNAME.EMAIL}
           onChange={(e) => setEmail(e.target.value)}
         />
         <InputField
-          name={INPUTFIELD.PASSWORD}
-          type={INPUTFIELD.PASSWORD}
+          name={INPUTFEILDNAME.PASSWORD}
+          type={INPUTFIELDTYPE.PASSWORD}
           value={password}
-          label={INPUTFIELD.PASSWORD}
+          label={INPUTFEILDNAME.PASSWORD}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button text={isSignIn ? BUTTONTEXT.SIGNIN : BUTTONTEXT.SIGNUP} />
+        <Button
+          text={isSignIn ? BUTTONTEXT.SIGNIN : BUTTONTEXT.SIGNUP}
+          borderRadius={"20px"}
+          backgroundColor={"#0a66c2"}
+          backgroundColorOnHover={"#004182"}
+          fontSize={"16px"}
+          fontWeight={"500"}
+          color={"white"}
+        />
         <GuidingTextToSignInOrUp>
-          or 
+          or {""}
           <span onClick={() => toggleIsSignIn(!isSignIn)}>
-            {isSignIn ? BUTTONTEXT.SIGNIN : BUTTONTEXT.SIGNUP}
+            {isSignIn ? BUTTONTEXT.SIGNUP : BUTTONTEXT.SIGNIN}
           </span>
         </GuidingTextToSignInOrUp>
       </FormContainer>
@@ -49,8 +62,46 @@ export default function SignIn() {
   );
 }
 
-const SignInContainer = styled.div``;
+const SignInContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: white;
+  width: 400px;
+  border-radius: 10px;
 
-const FormContainer = styled.form``;
+  h1 {
+    padding-top: 10px;
+    color: #0a66c2;
+    text-align: center;
+  }
+`;
 
-const GuidingTextToSignInOrUp = styled.div``;
+const FormContainer = styled.form`
+  width: 80%;
+  margin: 0 auto;
+
+  div {
+    margin: 10px 0;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px auto;
+    padding: 8px 0;
+  }
+`;
+
+const GuidingTextToSignInOrUp = styled.div`
+  text-align: center;
+  padding-bottom: 20px;
+
+  span {
+    cursor: pointer;
+    color: #0a66c2;
+    :hover {
+      color: #004182;
+    }
+  }
+`;
