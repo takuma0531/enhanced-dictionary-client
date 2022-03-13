@@ -7,6 +7,7 @@ import DictionaryResult from "@/components/sections/dictionaryResult";
 import { useAppSelector } from "@/store/hooks";
 import { selectWord } from "@/store/features/wordSlice";
 import { Word } from "@/typings/models/word";
+import { Colors } from "@/enums/Style";
 
 export default function Home() {
   const { word } = useAppSelector(selectWord);
@@ -24,10 +25,11 @@ export default function Home() {
         </TopNavBar>
       </div>
       <HomeBodyContainer>
-        <div className="leftSideBarWrapper">
+        <LeftSideNavBarWrapperContainer>
           <LeftSideNavBar />
-        </div>
-        <div className="dictionaryResultSectionWrapper">
+          <VerticalLine />
+        </LeftSideNavBarWrapperContainer>
+        <DictionaryResultSectionWrapperContainer>
           <div className="resultOfWordInTargetLanguageWrapper">
             <DictionaryResult
               title="Word in Target Language"
@@ -40,7 +42,7 @@ export default function Home() {
               text={wordToRender.definition}
             />
           </div>
-        </div>
+        </DictionaryResultSectionWrapperContainer>
       </HomeBodyContainer>
     </HomeContainer>
   );
@@ -50,5 +52,36 @@ const HomeContainer = styled.div``;
 
 const HomeBodyContainer = styled.div`
   width: 1200px;
+  height: 500px;
   margin: 0 auto;
+  background-color: ${Colors.WHITE};
+  display: flex;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+`;
+
+const LeftSideNavBarWrapperContainer = styled.div`
+  width: 30%;
+  margin: auto;
+  padding-left: 20px;
+  display: flex;
+`;
+
+const VerticalLine = styled.div`
+  border-left: 1px solid ${Colors.WHITE_GRAY};
+  height: 200px;
+`;
+
+const DictionaryResultSectionWrapperContainer = styled.div`
+  width: 70%;
+  display: flex;
+
+  .resultOfWordInTargetLanguageWrapper,
+  .resultOfDefinitionInDetectedLanguageWrappper {
+    width: 50%;
+    margin-top: 25px;
+  }
 `;

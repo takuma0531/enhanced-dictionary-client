@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { RoutePath } from "@/enums/routePath";
 import { useAppSelector } from "@/store/hooks";
 import { selectAuth } from "@/store/features/authSlice";
+import { Colors } from "@/enums/Style";
 
 export default function LeftSideNavBar() {
   const { isAuthenticated } = useAppSelector(selectAuth);
@@ -17,13 +18,28 @@ export default function LeftSideNavBar() {
   return (
     <LeftSideNavBarContainer className="leftSideNavBar">
       <div>
-        <Link to={RoutePath.HOME}>Dictionary</Link>
+        <Link className="navigation" to={RoutePath.HOME}>
+          Dictionary
+        </Link>
       </div>
       <div>
-        <div onClick={handleGoToMemoryGamePage}>Memory Game</div>
+        <div className="navigation" onClick={handleGoToMemoryGamePage}>
+          Memory Game
+        </div>
       </div>
     </LeftSideNavBarContainer>
   );
 }
 
-const LeftSideNavBarContainer = styled.div``;
+const LeftSideNavBarContainer = styled.div`
+  * {
+    margin: 10px;
+  }
+
+  .navigation {
+    cursor: pointer;
+    :hover {
+      color: ${Colors.LIGHT_BLUE};
+    }
+  }
+`;
