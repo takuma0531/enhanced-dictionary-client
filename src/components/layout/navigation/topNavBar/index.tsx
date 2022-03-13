@@ -1,24 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Colors } from "@/enums/Style";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { selectAuth, logoutUser } from "@/store/features/authSlice";
+import { RoutePath } from "@/enums/routePath";
 
 interface Props {
   children?: JSX.Element;
 }
 
 export default function TopNavBar({ children }: Props) {
+  const { isAuthenticated } = useAppSelector(selectAuth);
+  const dispatch = useAppDispatch();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    history.push(RoutePath.HOME);
+  };
+
   return (
     <TopNavBarContainer className="topNavBar">
       <div className="innerTopNavBar">
         <div>
-          <Link to="/">
+          <Link to={RoutePath.HOME}>
             <h1>Enhanced Dictionary</h1>
           </Link>
         </div>
         <div>{children}</div>
         <div>
-          <div className="ableToInteract">Login / Logout</div>
+          <div className="ableToInteract">
+            {!isAuthenticated ? (
+              <Link to={RoutePath.LOGIN}>Login</Link>
+            ) : (
+              <div onClick={handleLogout}>Logout</div>
+            )}
+          </div>
         </div>
       </div>
     </TopNavBarContainer>

@@ -3,6 +3,7 @@ import { RootState } from "../store";
 import { authService } from "@/services/http";
 import { User } from "@/typings/models/user";
 import { AsyncThunkTypeUser } from "@/enums/asyncThunkType";
+import { JwtService } from "@/services/localStorage/JwtService";
 
 interface AuthState {
   email: string;
@@ -29,10 +30,15 @@ export const authSlice = createSlice({
     toggleIsAuth: (state) => {
       state.isAuthenticated = !state.isAuthenticated;
     },
+    logoutUser: (state) => {
+      state.isAuthenticated = !state.isAuthenticated;
+      JwtService.removeToken();
+    },
   },
 });
 
-export const { updateEmail, updatePassword, toggleIsAuth } = authSlice.actions;
+export const { updateEmail, updatePassword, toggleIsAuth, logoutUser } =
+  authSlice.actions;
 
 const thunkFunctions = {
   registerUser: createAsyncThunk(
@@ -65,7 +71,7 @@ const thunkFunctions = {
   ),
 };
 
-export const { registerUser, loginUser, getUser, checkAuth } = thunkFunctions
+export const { registerUser, loginUser, getUser, checkAuth } = thunkFunctions;
 
 export const selectAuth = (state: RootState) => state.auth;
 export default authSlice.reducer;
