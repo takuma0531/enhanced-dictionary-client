@@ -6,7 +6,6 @@ import Select from "@/components/layout/select";
 import languagesInfo from "public/assets/languages.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Colors } from "@/enums/Style";
 
 interface Props {
   word: Word;

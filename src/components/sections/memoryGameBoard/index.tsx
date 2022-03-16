@@ -38,7 +38,7 @@ export default function MemoryGameBoard() {
   }, [wordsForMemoryGame]);
 
   useEffect(() => {
-    toggleVisibilityOfMemoryGameSettingsModal.current(open);
+    // toggleVisibilityOfMemoryGameSettingsModal.current(open);
   }, []);
 
   return (
@@ -53,7 +53,7 @@ export default function MemoryGameBoard() {
           }
         />
       </ModalWrapper>
-      <ModalWrapper toggleVisibility={toggleVisibilityOfFinishGameMessageModal}>
+      {/* <ModalWrapper toggleVisibility={toggleVisibilityOfFinishGameMessageModal}>
         <FinishGameMessageModalContent
           onClose={() =>
             toggleVisibilityOfFinishGameMessageModal.current(close)
@@ -62,7 +62,7 @@ export default function MemoryGameBoard() {
             toggleVisibilityOfMemoryGameSettingsModal.current(open)
           }
         />
-      </ModalWrapper>
+      </ModalWrapper> */}
       {renderWordCards}
     </MemoryGameBoardContainer>
   );

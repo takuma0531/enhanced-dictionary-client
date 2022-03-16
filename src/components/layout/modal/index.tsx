@@ -31,7 +31,7 @@ const ModalWrapperContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: #393b40;
+  // TODO: background color + blurring
 
   div.modal-main {
     position: fixed;
