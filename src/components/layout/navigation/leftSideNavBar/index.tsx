@@ -1,20 +1,10 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { RoutePath } from "@/enums/routePath";
-import { useAppSelector } from "@/store/hooks";
-import { selectAuth } from "@/store/features/authSlice";
 import { Colors } from "@/enums/Style";
 
 export default function LeftSideNavBar() {
-  const { isAuthenticated } = useAppSelector(selectAuth);
-  const history = useHistory();
-
-  const handleGoToMemoryGamePage = () => {
-    if (isAuthenticated) history.push(RoutePath.MEMORYGAME);
-    else history.push(RoutePath.LOGIN);
-  };
-
   return (
     <LeftSideNavBarContainer className="leftSideNavBar">
       <div>
@@ -23,9 +13,9 @@ export default function LeftSideNavBar() {
         </Link>
       </div>
       <div>
-        <div className="navigation" onClick={handleGoToMemoryGamePage}>
+        <Link className="navigation" to={RoutePath.MEMORYGAME}>
           Memory Game
-        </div>
+        </Link>
       </div>
     </LeftSideNavBarContainer>
   );
