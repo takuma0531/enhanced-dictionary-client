@@ -6,6 +6,7 @@ import Select from "@/components/layout/select";
 import languagesInfo from "public/assets/languages.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Colors } from "@/enums/Style";
 
 interface Props {
   word: Word;
@@ -67,6 +68,7 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
           selectValue={word.detectedLanguage}
           onChange={handleSwitchingDetectedLanguage}
           options={renderLanguageOptions}
+          padding={"2px"}
         ></Select>
       </div>
       <div>
@@ -82,6 +84,7 @@ export default function WordLanguageSwitcher({ word, setWord }: Props) {
           selectValue={word.targetLanguage}
           onChange={handleSwitchingTargetLanguage}
           options={renderLanguageOptions}
+          padding={"2px"}
         ></Select>
       </div>
     </WordLanguageSwitcherContainer>
@@ -93,4 +96,8 @@ const WordLanguageSwitcherContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+
+  * {
+    margin: 0 1px;
+  }
 `;

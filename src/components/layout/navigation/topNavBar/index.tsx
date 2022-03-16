@@ -62,7 +62,7 @@ const TopNavBarContainer = styled.div`
 
     .ableToInteract {
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     .ableToInteract:hover {

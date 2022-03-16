@@ -2,7 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { Colors } from "@/enums/Style";
 
-interface Props {
+interface StyleProps {
+  borderRadius?: string;
+  border?: string;
+  backgroundColor?: string;
+  backgroundColorOnHover?: string | null;
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+  padding?: string;
+}
+
+interface Props extends StyleProps {
   name?: string;
   label?: string;
   isLabelRequired?: boolean;
@@ -24,6 +35,14 @@ export default function InputField({
   isRequired = true,
   onChange,
   placeHolder = "",
+  borderRadius = "10px",
+  border = `0.5px solid ${Colors.LIGHT_GRAY}`,
+  backgroundColor = "transparent",
+  backgroundColorOnHover = null,
+  fontSize = "inherit",
+  fontWeight = "inherit",
+  color = "inherit",
+  padding = "5px 10px",
 }: Props) {
   return (
     <InputFieldContainer>
@@ -35,6 +54,14 @@ export default function InputField({
         required={isRequired}
         minLength={minLength}
         placeholder={placeHolder}
+        borderRadius={borderRadius}
+        border={border}
+        backgroundColor={backgroundColor}
+        backgroundColorOnHover={backgroundColorOnHover}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        color={color}
+        padding={padding}
       />
     </InputFieldContainer>
   );
@@ -49,11 +76,18 @@ const Label = styled.label`
   color: ${Colors.GRAY};
 `;
 
-const Input = styled.input`
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 0.5px solid ${Colors.LIGHT_GRAY};
-  padding: 5px 10px;
+const Input = styled.input<StyleProps>`
+  padding: ${({ padding }) => padding};
+  border-radius: ${({ borderRadius }) => borderRadius};
+  border: ${({ border }) => border};
+  background: ${({ backgroundColor }) => backgroundColor};
+  :hover {
+    ${({ backgroundColorOnHover }) =>
+      backgroundColorOnHover && `background: ${backgroundColorOnHover}`}
+  }
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ fontWeight }) => fontWeight};
+  color: ${({ color }) => color};
   :focus {
     outline: none !important;
   }
