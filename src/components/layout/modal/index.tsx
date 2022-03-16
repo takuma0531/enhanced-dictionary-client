@@ -31,11 +31,10 @@ const ModalWrapperContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: #393b40;
 
   div.modal-main {
     position: fixed;
-    background: #f8f6f3;
     width: 50%;
     height: auto;
     top: 50%;

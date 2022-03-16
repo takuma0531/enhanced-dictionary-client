@@ -39,7 +39,7 @@ export default function MemoryGameBoard() {
 
   useEffect(() => {
     toggleVisibilityOfMemoryGameSettingsModal.current(open);
-  });
+  }, []);
 
   return (
     <MemoryGameBoardContainer>

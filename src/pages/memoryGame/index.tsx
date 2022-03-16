@@ -5,7 +5,7 @@ import { webSocket } from "@/services/webSocket/WebSocket";
 
 export default function MemoryGame() {
   useEffect(() => {
-    webSocket.init();
+    // webSocket.init();
   }, []);
 
   return (

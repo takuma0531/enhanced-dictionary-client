@@ -14,8 +14,12 @@ export default function MemoryGameSettingsModalContent({ onClose }: Props) {
   const optionsOfNumberOfPairs = [5, 6, 7, 8, 9, 10];
 
   const optionsOfNumberOfPairsList = optionsOfNumberOfPairs.map(
-    (option: number) => {
-      return <option value={option}>{option}</option>;
+    (option: number, index: number) => {
+      return (
+        <option key={index} value={option}>
+          {option}
+        </option>
+      );
     }
   );
 
@@ -38,4 +42,7 @@ export default function MemoryGameSettingsModalContent({ onClose }: Props) {
   );
 }
 
-const MemoryGameSettingsModalContainer = styled.div``;
+const MemoryGameSettingsModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
