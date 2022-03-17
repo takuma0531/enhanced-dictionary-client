@@ -6,12 +6,16 @@ interface StyleProps {
   border?: string;
   borderLeft?: string;
   backgroundColor?: string;
-  backgroundColorOnHover?: string | null;
-  textShadowOnHover?: string | null;
+  boxShadow?: string | null;
   fontSize?: string;
   fontWeight?: string;
   color?: string;
   padding?: string;
+  opacity?: string;
+  backgroundColorOnHover?: string | null;
+  textShadowOnHover?: string | null;
+  boxShadowOnHover?: string | null;
+  opacityOnHover?: string | null;
 }
 
 interface Props extends StyleProps {
@@ -26,12 +30,16 @@ export default function Button({
   border = "0.5px solid #0000004d",
   borderLeft = "",
   backgroundColor = "transparent",
-  backgroundColorOnHover = null,
-  textShadowOnHover = null,
+  boxShadow = null,
   fontSize = "inherit",
   fontWeight = "inherit",
   color = "inherit",
   padding = "0",
+  opacity = "1",
+  backgroundColorOnHover = null,
+  textShadowOnHover = null,
+  boxShadowOnHover = null,
+  opacityOnHover = null,
 }: Props) {
   return (
     <ButtonContainer
@@ -40,12 +48,16 @@ export default function Button({
       border={border}
       borderLeft={borderLeft}
       backgroundColor={backgroundColor}
-      backgroundColorOnHover={backgroundColorOnHover}
-      textShadowOnHover={textShadowOnHover}
+      boxShadow={boxShadow}
       fontSize={fontSize}
       fontWeight={fontWeight}
       color={color}
       padding={padding}
+      opacity={opacity}
+      backgroundColorOnHover={backgroundColorOnHover}
+      textShadowOnHover={textShadowOnHover}
+      boxShadowOnHover={boxShadowOnHover}
+      opacityOnHover={opacityOnHover}
     >
       {text}
     </ButtonContainer>
@@ -59,13 +71,18 @@ const ButtonContainer = styled.button<StyleProps>`
   border-left: ${({ borderLeft }) => borderLeft};
   cursor: pointer;
   background: ${({ backgroundColor }) => backgroundColor};
-  :hover {
-    ${({ backgroundColorOnHover }) =>
-      backgroundColorOnHover && `background: ${backgroundColorOnHover}`}
-    ${({ textShadowOnHover }) =>
-      textShadowOnHover && `text-shadow: ${textShadowOnHover}`}
-  }
+  box-shadow: ${({ boxShadow }) => boxShadow && boxShadow};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
+  opacity: ${({ opacity }) => opacity};
+  :hover {
+    ${({ backgroundColorOnHover }) =>
+      backgroundColorOnHover && `background: ${backgroundColorOnHover};`}
+    ${({ textShadowOnHover }) =>
+      textShadowOnHover && `text-shadow: ${textShadowOnHover};`}
+    ${({ boxShadowOnHover }) =>
+      boxShadowOnHover && `box-shadow: ${boxShadowOnHover};`}
+      ${({ opacityOnHover }) => opacityOnHover && `opacity: ${opacityOnHover};`}
+  }
 `;

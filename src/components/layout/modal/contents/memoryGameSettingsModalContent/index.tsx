@@ -60,9 +60,12 @@ export default function MemoryGameSettingsModalContent({ onClose }: Props) {
         </div>
         <Button
           text={BUTTONTEXT.CONFIRM}
-          backgroundColor={Colors.WHITE}
+          color={Colors.YELLOW}
           padding={"5px 10px"}
+          border={`solid 1px ${Colors.WHITE}`}
           borderRadius={"15px"}
+          fontWeight={"bolder"}
+          opacityOnHover={"0.8"}
         />
       </FormContainer>
     </MemoryGameSettingsModalContainer>
@@ -73,7 +76,7 @@ const MemoryGameSettingsModalContainer = styled.div`
   width: 390px;
   height: 380px;
   margin: 0 auto;
-  background: #121212cc;
+  background: ${Colors.LIGHT_BLACK};
   border-radius: 5px;
 `;
 
