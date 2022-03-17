@@ -50,7 +50,7 @@ const TopNavBarContainer = styled.div`
 
   .innerTopNavBar {
     display: flex;
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;

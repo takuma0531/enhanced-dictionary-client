@@ -36,7 +36,7 @@ export default function Routes() {
           <PrivateRoute
             path={RoutePath.MEMORYGAME}
             component={MemoryGame}
-            isAuthenticated={!isAuthenticated}
+            isAuthenticated={isAuthenticated}
           />
           <Route render={() => <div>404</div>} />
         </Switch>
