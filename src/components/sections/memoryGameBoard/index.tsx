@@ -44,7 +44,6 @@ export default function MemoryGameBoard() {
 
   return (
     <MemoryGameBoardContainer className="memory-game-board">
-      {/* modal for game settings */}
       <ModalWrapper
         toggleVisibility={toggleVisibilityOfMemoryGameSettingsModal}
       >

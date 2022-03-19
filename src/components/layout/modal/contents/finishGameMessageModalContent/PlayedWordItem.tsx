@@ -6,6 +6,10 @@ import {
   updateWord,
   refreshCountOfWordPlayed,
 } from "@/store/features/wordSlice";
+import { Colors } from "@/enums/Style";
+import Button from "@/components/layout/button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   word: Word;
@@ -29,16 +33,39 @@ export default function PlayedWordItem({ word }: Props) {
 
   return (
     <PlayedWordItemContainer isVisible={isVisible}>
-      <div>{word.detectedText}</div>
-      <div>
-        <p>Remembered?</p>
-        <button onClick={onRefreshCountOfWordPlayed}>x</button>
-        <button onClick={onUpdateWord}>o</button>
+      <p>Did you remember {word.detectedText}?</p>
+      <div className={"rememberConfirmButtons"}>
+        <Button
+          onClick={onRefreshCountOfWordPlayed}
+          text={<FontAwesomeIcon icon={faXmark} />}
+          color={Colors.RED}
+          border={"none"}
+          opacityOnHover={"0.8"}
+        />
+        <Button
+          onClick={onUpdateWord}
+          text={<FontAwesomeIcon icon={faCheck} />}
+          color={Colors.GREEN}
+          border={"none"}
+          opacityOnHover={"0.8"}
+        />
       </div>
     </PlayedWordItemContainer>
   );
 }
 
 const PlayedWordItemContainer = styled.li<{ isVisible: boolean }>`
-  display: ${(isVisible) => (isVisible ? "block" : "none")};
+  display: ${(isVisible) => (isVisible ? "flex" : "none")};
+  align-items: center;
+  color: ${Colors.WHITE};
+
+  p {
+    width: 75%;
+  }
+
+  .rememberConfirmButtons {
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+  }
 `;
