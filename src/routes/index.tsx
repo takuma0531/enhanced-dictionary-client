@@ -21,12 +21,13 @@ export default function Routes() {
       <Suspense fallback={Loading}>
         <Switch>
           <Redirect exact from="/" to={RoutePath.HOME} />
-          <PrivateRoute
+          {/* <PrivateRoute
             path={RoutePath.HOME}
             component={Home}
             isAuthenticated={isAuthenticated}
             isPublic={true}
-          />
+          /> */}
+          <Route path={RoutePath.HOME} component={Home} />
           <PrivateRoute
             path={RoutePath.LOGIN}
             component={SignIn}
