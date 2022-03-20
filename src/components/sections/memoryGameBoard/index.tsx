@@ -29,7 +29,7 @@ export default function MemoryGameBoard() {
 
   const finishGame = () => {
     dispatch(incrementCountOfWordsPlayed(wordsForMemoryGame));
-    toggleVisibilityOfFinishGameMessageModal.current(open);
+    toggleVisibilityOfFinishGameMessageModal.current(true);
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function MemoryGameBoard() {
   }, [wordsForMemoryGame]);
 
   useEffect(() => {
-    toggleVisibilityOfMemoryGameSettingsModal.current(open);
+    toggleVisibilityOfMemoryGameSettingsModal.current(true);
   }, []);
 
   return (
@@ -49,17 +49,17 @@ export default function MemoryGameBoard() {
       >
         <MemoryGameSettingsModalContent
           onClose={() =>
-            toggleVisibilityOfMemoryGameSettingsModal.current(close)
+            toggleVisibilityOfMemoryGameSettingsModal.current(false)
           }
         />
       </ModalWrapper>
       <ModalWrapper toggleVisibility={toggleVisibilityOfFinishGameMessageModal}>
         <FinishGameMessageModalContent
           onClose={() =>
-            toggleVisibilityOfFinishGameMessageModal.current(close)
+            toggleVisibilityOfFinishGameMessageModal.current(false)
           }
           onOpenMemoryGameSettingsModal={() =>
-            toggleVisibilityOfMemoryGameSettingsModal.current(open)
+            toggleVisibilityOfMemoryGameSettingsModal.current(true)
           }
         />
       </ModalWrapper>
