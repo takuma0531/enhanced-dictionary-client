@@ -28,7 +28,7 @@ export default function FinishGameMessageModalContent({
   });
 
   const goBackToDictionaryHomePage = () => {
-    onClose;
+    onClose();
     history.push(RoutePath.HOME);
   };
 

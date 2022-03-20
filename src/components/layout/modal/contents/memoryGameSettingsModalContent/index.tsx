@@ -33,10 +33,10 @@ export default function MemoryGameSettingsModalContent({ onClose }: Props) {
 
   const handleSubmittingNumberOfPairs: React.FormEventHandler<
     HTMLFormElement
-  > = async (e) => {
+  > = (e) => {
     e.preventDefault();
-    await dispatch(getWordsForMemoryGame(numberOfPairs));
-    onClose;
+    dispatch(getWordsForMemoryGame(numberOfPairs));
+    onClose();
   };
 
   return (
@@ -62,7 +62,7 @@ export default function MemoryGameSettingsModalContent({ onClose }: Props) {
           text={BUTTONTEXT.CONFIRM}
           color={Colors.YELLOW}
           padding={"5px 10px"}
-          border={`solid 1px ${Colors.WHITE}`}
+          border={`outset 1px ${Colors.WHITE}`}
           borderRadius={"15px"}
           fontWeight={"bolder"}
           opacityOnHover={"0.8"}
