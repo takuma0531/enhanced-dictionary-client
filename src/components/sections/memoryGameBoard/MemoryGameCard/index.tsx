@@ -16,16 +16,19 @@ export default function MemoryGameCard({ wordCard }: Props) {
   };
 
   const onFlip = (wordCardOrderId: number) => {
-    if (wordCardOrderId != wordCard.orderId) return;
     wordCardOrderId == wordCard.orderId && setisActive(true);
   };
 
   const onUnflip = (activeWordCards: WordCard[]) => {
-    if (!isActive) return;
+    // if (!isActive) return;
     const isFlipped = activeWordCards.some(
       (activeWordCard: WordCard) => activeWordCard.orderId == wordCard.orderId
     );
-    if (isFlipped) setisActive(false);
+    if (isFlipped) {
+      setTimeout(() => {
+        setisActive(false);
+      }, 1200);
+    }
   };
 
   const onGameCheck = (activeWordCards: WordCard[]) => {

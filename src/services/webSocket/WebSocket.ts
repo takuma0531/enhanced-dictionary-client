@@ -19,7 +19,6 @@ class WebSocket implements IWebSocket {
   }
 
   public gameStart(words: Word[], callback: any): void {
-    // TODO: check how it behaves
     this._socket?.emit(SocketEventNames.GAME_START, words);
     this._socket?.on(SocketEventNames.INITIAL_GAME_DATA_SHARE, callback);
   }
