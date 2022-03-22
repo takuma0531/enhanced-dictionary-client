@@ -5,7 +5,7 @@ export interface IWordService {
   getAllWords(): Promise<Word[]>;
   getWordsForMemoryGame(numberOfPairs: number): Promise<Word[]>;
   updateWord(word: Word): Promise<Word>;
-  incrementCountOfWordsPlayed(words: Word[]): Promise<Word>;
+  incrementCountOfWordPlayed(word: Word): Promise<Word>;
   refreshCountOfWordPlayed(wordId: string): Promise<Word>;
   deleteWord(wordId: string): Promise<void>;
 }

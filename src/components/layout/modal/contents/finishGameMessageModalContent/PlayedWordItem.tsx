@@ -5,6 +5,7 @@ import { Word } from "@/typings/models/word";
 import {
   updateWord,
   refreshCountOfWordPlayed,
+  incrementCountOfWordsPlayed,
 } from "@/store/features/wordSlice";
 import { Colors } from "@/enums/Style";
 import Button from "@/components/layout/button";
@@ -20,14 +21,16 @@ export default function PlayedWordItem({ word }: Props) {
   const [isVisible, setIsVisible] = useState(true);
 
   const onUpdateWord = () => {
-    word.isMemorized = !word.isMemorized;
-    dispatch(updateWord(word));
+    const wordToUpdate = { ...word };
+    wordToUpdate.isMemorized = !word.isMemorized;
+    dispatch(updateWord(wordToUpdate));
     setIsVisible(false);
   };
 
   const onRefreshCountOfWordPlayed = () => {
-    if (word.count! <= 5) return;
-    dispatch(refreshCountOfWordPlayed(word.id!));
+    console.log(word);
+    if (word.count! <= 5) dispatch(incrementCountOfWordsPlayed(word));
+    else dispatch(refreshCountOfWordPlayed(word.id!));
     setIsVisible(false);
   };
 

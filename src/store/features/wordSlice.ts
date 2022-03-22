@@ -73,8 +73,8 @@ const thunkFunctions = {
   ),
   incrementCountOfWordsPlayed: createAsyncThunk(
     AsyncThunkTypeWord.INCREMENTING_COUNT_OF_WORD_PLAYED,
-    async (words: Word[]) => {
-      await wordService.incrementCountOfWordsPlayed(words);
+    async (word: Word) => {
+      await wordService.incrementCountOfWordPlayed(word);
     }
   ),
   refreshCountOfWordPlayed: createAsyncThunk(

@@ -23,13 +23,17 @@ export default function WordSearching() {
   const inputText = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const copiedWord = { ...word };
+    const copiedWord = {
+      detectedText: "",
+      detectedLanguage: word.detectedLanguage,
+      targetLanguage: word.targetLanguage,
+    };
     copiedWord.detectedText = e.target.value;
     setWord(copiedWord);
   };
 
-  const handleSearching = () => {
-    dispatch(searchWord(word));
+  const handleSearching = async () => {
+    await dispatch(searchWord(word));
     isAuthenticated && dispatch(registerWord(word));
   };
 

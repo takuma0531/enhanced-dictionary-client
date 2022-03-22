@@ -20,7 +20,7 @@ export default function MemoryGameCard({ wordCard }: Props) {
   };
 
   const onUnflip = (activeWordCards: WordCard[]) => {
-    // if (!isActive) return;
+    // if (!isActive) return; TODO: why is false?
     const isFlipped = activeWordCards.some(
       (activeWordCard: WordCard) => activeWordCard.orderId == wordCard.orderId
     );
@@ -32,11 +32,15 @@ export default function MemoryGameCard({ wordCard }: Props) {
   };
 
   const onGameCheck = (activeWordCards: WordCard[]) => {
-    if (!isActive) return;
+    // if (!isActive) return;
     const isFlipped = activeWordCards.some(
       (activeWordCard: WordCard) => activeWordCard.orderId == wordCard.orderId
     );
-    if (isFlipped) setIsMatched(true);
+    if (isFlipped) {
+      setTimeout(() => {
+        setIsMatched(true);
+      }, 1200);
+    }
   };
 
   useEffect(() => {

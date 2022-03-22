@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { useAppSelector, useAppDispatch } from "@/store/hooks";
-import {
-  selectWord,
-  incrementCountOfWordsPlayed,
-} from "@/store/features/wordSlice";
+import { useAppSelector } from "@/store/hooks";
+import { selectWord } from "@/store/features/wordSlice";
 import MemoryGameCard from "./MemoryGameCard";
 import ModalWrapper from "@/components/layout/modal";
 import {
@@ -18,7 +15,6 @@ import { Colors } from "@/enums/Style";
 // check if works TODO:
 export default function MemoryGameBoard() {
   const { wordsForMemoryGame } = useAppSelector(selectWord);
-  const dispatch = useAppDispatch();
   const [wordCards, setWordCards] = useState<WordCard[]>([]);
   const toggleVisibilityOfMemoryGameSettingsModal = useRef<any>();
   const toggleVisibilityOfFinishGameMessageModal = useRef<any>();
@@ -28,7 +24,6 @@ export default function MemoryGameBoard() {
   });
 
   const finishGame = () => {
-    dispatch(incrementCountOfWordsPlayed(wordsForMemoryGame));
     toggleVisibilityOfFinishGameMessageModal.current(true);
   };
 

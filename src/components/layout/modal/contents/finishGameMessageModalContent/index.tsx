@@ -91,6 +91,11 @@ const FinishGameMessageModalContentInnerContainer = styled.div`
     text-align: center;
   }
 
+  ul {
+    height: 200px;
+    overflow: scroll;
+  }
+
   .after-game-buttons-section {
     display: flex;
     justify-content: space-evenly;
