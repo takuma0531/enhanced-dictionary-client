@@ -19,6 +19,7 @@ export default function SignIn() {
   const dispatch = useAppDispatch();
 
   const handleSubmitting = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("sign in or sign up attempted");
     e.preventDefault();
     isSignIn
       ? dispatch(loginUser({ email, password }))

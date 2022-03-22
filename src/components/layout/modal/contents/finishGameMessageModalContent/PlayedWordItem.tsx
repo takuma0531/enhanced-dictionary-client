@@ -28,7 +28,6 @@ export default function PlayedWordItem({ word }: Props) {
   };
 
   const onRefreshCountOfWordPlayed = () => {
-    console.log(word);
     if (word.count! <= 5) dispatch(incrementCountOfWordsPlayed(word));
     else dispatch(refreshCountOfWordPlayed(word.id!));
     setIsVisible(false);
@@ -58,7 +57,7 @@ export default function PlayedWordItem({ word }: Props) {
 }
 
 const PlayedWordItemContainer = styled.li<{ isVisible: boolean }>`
-  display: ${(isVisible) => (isVisible ? "flex" : "none")};
+  display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
   align-items: center;
   color: ${Colors.WHITE};
 

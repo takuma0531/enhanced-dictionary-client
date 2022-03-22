@@ -92,13 +92,12 @@ const FinishGameMessageModalContentInnerContainer = styled.div`
   }
 
   ul {
-    height: 200px;
-    overflow: scroll;
+    height: 220px;
+    overflow-y: scroll;
   }
 
   .after-game-buttons-section {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 110px;
   }
 `;

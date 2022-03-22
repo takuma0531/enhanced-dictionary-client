@@ -34,12 +34,13 @@ export default function MemoryGameBoard() {
   }, [wordsForMemoryGame]);
 
   useEffect(() => {
-    toggleVisibilityOfMemoryGameSettingsModal.current(true);
+    toggleVisibilityOfFinishGameMessageModal.current(true);
+    // toggleVisibilityOfMemoryGameSettingsModal.current(true);
   }, []);
 
   return (
     <MemoryGameBoardContainer className="memory-game-board">
-      <ModalWrapper
+      {/* <ModalWrapper
         toggleVisibility={toggleVisibilityOfMemoryGameSettingsModal}
       >
         <MemoryGameSettingsModalContent
@@ -47,7 +48,7 @@ export default function MemoryGameBoard() {
             toggleVisibilityOfMemoryGameSettingsModal.current(false)
           }
         />
-      </ModalWrapper>
+      </ModalWrapper> */}
       <ModalWrapper toggleVisibility={toggleVisibilityOfFinishGameMessageModal}>
         <FinishGameMessageModalContent
           onClose={() =>
