@@ -28,7 +28,9 @@ export default function MemoryGameBoard() {
   });
 
   const finishGame = () => {
-    toggleVisibilityOfFinishGameMessageModal.current(true);
+    setTimeout(() => {
+      toggleVisibilityOfFinishGameMessageModal.current(true);
+    }, 1300);
   };
 
   useEffect(() => {
