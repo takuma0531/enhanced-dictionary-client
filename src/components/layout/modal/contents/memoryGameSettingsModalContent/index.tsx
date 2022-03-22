@@ -87,16 +87,13 @@ const FormContainer = styled.form`
   margin: 0 auto;
   --gap: 45px;
 
-  h1,
-  label {
-    color: ${Colors.WHITE};
-  }
-
   h1 {
+    color: ${Colors.YELLOW};
     text-align: center;
   }
 
   label {
+    color: ${Colors.WHITE};
     margin: 0 5px;
   }
 

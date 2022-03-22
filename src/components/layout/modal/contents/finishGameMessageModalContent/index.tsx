@@ -1,8 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { useAppSelector } from "@/store/hooks";
-import { selectWord } from "@/store/features/wordSlice";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import {
+  selectWord,
+  updateWordsForMemoryGame,
+} from "@/store/features/wordSlice";
 import { RoutePath } from "@/enums/routePath";
 import PlayedWordItem from "./PlayedWordItem";
 import { Word } from "@/typings/models/word";
@@ -21,6 +24,7 @@ export default function FinishGameMessageModalContent({
   onOpenMemoryGameSettingsModal,
 }: Props) {
   const history = useHistory();
+  const dispatch = useAppDispatch();
   const { wordsForMemoryGame } = useAppSelector(selectWord);
 
   const renderListOfWordsPlayed = wordsForMemoryGame.map((word: Word) => {
@@ -33,8 +37,9 @@ export default function FinishGameMessageModalContent({
   };
 
   const handlePlayAgain = () => {
-    onClose;
-    onOpenMemoryGameSettingsModal;
+    dispatch(updateWordsForMemoryGame([]));
+    onClose();
+    onOpenMemoryGameSettingsModal();
   };
 
   return (

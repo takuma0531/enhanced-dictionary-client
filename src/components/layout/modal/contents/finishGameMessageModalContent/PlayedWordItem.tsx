@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch } from "@/store/hooks";
 import { Word } from "@/typings/models/word";
@@ -23,6 +23,7 @@ export default function PlayedWordItem({ word }: Props) {
   const onUpdateWord = () => {
     const wordToUpdate = { ...word };
     wordToUpdate.isMemorized = !word.isMemorized;
+    wordToUpdate.dateMemorized = new Date();
     dispatch(updateWord(wordToUpdate));
     setIsVisible(false);
   };
@@ -32,6 +33,13 @@ export default function PlayedWordItem({ word }: Props) {
     else dispatch(refreshCountOfWordPlayed(word.id!));
     setIsVisible(false);
   };
+
+  useEffect(() => {
+    return () => {
+      // TODO: handle rest unselected word
+      setIsVisible(true);
+    };
+  }, []);
 
   return (
     <PlayedWordItemContainer isVisible={isVisible}>

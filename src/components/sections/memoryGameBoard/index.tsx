@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { useAppSelector } from "@/store/hooks";
-import { selectWord } from "@/store/features/wordSlice";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import {
+  selectWord,
+  updateWordsForMemoryGame,
+} from "@/store/features/wordSlice";
 import MemoryGameCard from "./MemoryGameCard";
 import ModalWrapper from "@/components/layout/modal";
 import {
@@ -15,6 +18,7 @@ import { Colors } from "@/enums/Style";
 // check if works TODO:
 export default function MemoryGameBoard() {
   const { wordsForMemoryGame } = useAppSelector(selectWord);
+  const dispatch = useAppDispatch();
   const [wordCards, setWordCards] = useState<WordCard[]>([]);
   const toggleVisibilityOfMemoryGameSettingsModal = useRef<any>();
   const toggleVisibilityOfFinishGameMessageModal = useRef<any>();
@@ -34,13 +38,19 @@ export default function MemoryGameBoard() {
   }, [wordsForMemoryGame]);
 
   useEffect(() => {
-    toggleVisibilityOfFinishGameMessageModal.current(true);
-    // toggleVisibilityOfMemoryGameSettingsModal.current(true);
+    toggleVisibilityOfMemoryGameSettingsModal.current(true);
+
+    return () => {
+      toggleVisibilityOfFinishGameMessageModal.current(false);
+      toggleVisibilityOfMemoryGameSettingsModal.current(false);
+      dispatch(updateWordsForMemoryGame([]));
+      setWordCards([]);
+    };
   }, []);
 
   return (
     <MemoryGameBoardContainer className="memory-game-board">
-      {/* <ModalWrapper
+      <ModalWrapper
         toggleVisibility={toggleVisibilityOfMemoryGameSettingsModal}
       >
         <MemoryGameSettingsModalContent
@@ -48,7 +58,7 @@ export default function MemoryGameBoard() {
             toggleVisibilityOfMemoryGameSettingsModal.current(false)
           }
         />
-      </ModalWrapper> */}
+      </ModalWrapper>
       <ModalWrapper toggleVisibility={toggleVisibilityOfFinishGameMessageModal}>
         <FinishGameMessageModalContent
           onClose={() =>
