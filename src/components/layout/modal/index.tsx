@@ -1,3 +1,4 @@
+import { Colors } from "@/enums/Style";
 import React, { useEffect, useState, MutableRefObject } from "react";
 import styled from "styled-components";
 
@@ -31,7 +32,7 @@ const ModalWrapperContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  // TODO: background color + blurring
+  background: ${Colors.LIGHT_GRAY};
 
   div.modal-main {
     position: fixed;

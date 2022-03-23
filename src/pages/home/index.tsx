@@ -4,18 +4,25 @@ import TopNavBar from "@/components/layout/navigation/topNavBar";
 import WordSearching from "@/components/layout/navigation/topNavBar/wordSearching";
 import LeftSideNavBar from "@/components/layout/navigation/leftSideNavBar";
 import DictionaryResult from "@/components/sections/dictionaryResult";
-import { useAppSelector } from "@/store/hooks";
-import { selectWord } from "@/store/features/wordSlice";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { selectWord, updateWordState } from "@/store/features/wordSlice";
 import { Word } from "@/typings/models/word";
 import { Colors } from "@/enums/Style";
 
 export default function Home() {
+  const dispatch = useAppDispatch();
   const { word } = useAppSelector(selectWord);
   const [wordToRender, setWordToRender] = useState<Word>({});
 
   useEffect(() => {
     setWordToRender(word);
   }, [word]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(updateWordState({}));
+    };
+  }, []);
 
   return (
     <HomeContainer className="home">

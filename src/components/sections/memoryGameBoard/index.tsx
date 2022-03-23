@@ -9,23 +9,30 @@ import MemoryGameCard from "./MemoryGameCard";
 import ModalWrapper from "@/components/layout/modal";
 import {
   FinishGameMessageModalContent,
+  MemoryGameErrorMessageModalContent,
   MemoryGameSettingsModalContent,
 } from "@/components/layout/modal/contents";
 import { WordCard } from "@/typings/models/word";
 import { webSocket } from "@/services/webSocket/WebSocket";
 import { Colors } from "@/enums/Style";
 
-// check if works TODO:
 export default function MemoryGameBoard() {
   const { wordsForMemoryGame } = useAppSelector(selectWord);
   const dispatch = useAppDispatch();
   const [wordCards, setWordCards] = useState<WordCard[]>([]);
   const toggleVisibilityOfMemoryGameSettingsModal = useRef<any>();
+  const toggleVisibilityOfMemoryGameErrorMessageModal = useRef<any>();
   const toggleVisibilityOfFinishGameMessageModal = useRef<any>();
 
   const renderWordCards = wordCards.map((wordCard: WordCard) => {
     return <MemoryGameCard key={wordCard.orderId} wordCard={wordCard} />;
   });
+
+  const startGame = () => {
+    webSocket.init();
+    webSocket.gameStart(wordsForMemoryGame!, setWordCards);
+    webSocket.onGameFinish(finishGame);
+  };
 
   const finishGame = () => {
     setTimeout(() => {
@@ -34,12 +41,9 @@ export default function MemoryGameBoard() {
     }, 1300);
   };
 
-  useEffect(() => {
-    if (wordsForMemoryGame.length == 0) return;
-    webSocket.init();
-    webSocket.gameStart(wordsForMemoryGame, setWordCards);
-    webSocket.onGameFinish(finishGame);
-  }, [wordsForMemoryGame]);
+  // useEffect(() => {
+  //   if (wordsForMemoryGame.length == 0) return;
+  // }, [wordsForMemoryGame]);
 
   useEffect(() => {
     toggleVisibilityOfMemoryGameSettingsModal.current(true);
@@ -60,6 +64,19 @@ export default function MemoryGameBoard() {
         <MemoryGameSettingsModalContent
           onClose={() =>
             toggleVisibilityOfMemoryGameSettingsModal.current(false)
+          }
+          startGame={startGame}
+          openMemoryGameErrorMessageModal={() =>
+            toggleVisibilityOfMemoryGameErrorMessageModal.current(true)
+          }
+        />
+      </ModalWrapper>
+      <ModalWrapper
+        toggleVisibility={toggleVisibilityOfMemoryGameErrorMessageModal}
+      >
+        <MemoryGameErrorMessageModalContent
+          onClose={() =>
+            toggleVisibilityOfMemoryGameErrorMessageModal.current(false)
           }
         />
       </ModalWrapper>

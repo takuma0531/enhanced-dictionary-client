@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "@/store/hooks";
-import { getWordsForMemoryGame } from "@/store/features/wordSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { getWordsForMemoryGame, selectWord } from "@/store/features/wordSlice";
 import Select from "@/components/layout/select";
 import Button from "@/components/layout/button";
 import {
@@ -13,10 +13,17 @@ import { Colors } from "@/enums/Style";
 
 interface Props {
   onClose: any;
+  startGame: any;
+  openMemoryGameErrorMessageModal: any;
 }
 
-export default function MemoryGameSettingsModalContent({ onClose }: Props) {
+export default function MemoryGameSettingsModalContent({
+  onClose,
+  startGame,
+  openMemoryGameErrorMessageModal,
+}: Props) {
   const dispatch = useAppDispatch();
+  const { wordsForMemoryGame } = useAppSelector(selectWord);
   const [numberOfPairs, setNumberOfPairs] = useState<number>(5);
 
   const optionsOfNumberOfPairs = [5, 6, 7, 8, 9, 10];
@@ -36,8 +43,15 @@ export default function MemoryGameSettingsModalContent({ onClose }: Props) {
   > = (e) => {
     e.preventDefault();
     dispatch(getWordsForMemoryGame(numberOfPairs));
-    onClose();
   };
+
+  useEffect(() => {
+    if (wordsForMemoryGame === null) return;
+    else if (wordsForMemoryGame.length < numberOfPairs)
+      openMemoryGameErrorMessageModal();
+    else startGame();
+    onClose();
+  }, [wordsForMemoryGame]);
 
   return (
     <MemoryGameSettingsModalContainer>

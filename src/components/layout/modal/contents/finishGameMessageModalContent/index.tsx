@@ -27,7 +27,7 @@ export default function FinishGameMessageModalContent({
   const dispatch = useAppDispatch();
   const { wordsForMemoryGame } = useAppSelector(selectWord);
 
-  const renderListOfWordsPlayed = wordsForMemoryGame.map((word: Word) => {
+  const renderListOfWordsPlayed = wordsForMemoryGame?.map((word: Word) => {
     return <PlayedWordItem key={word.id} word={word} />;
   });
 

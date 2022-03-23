@@ -11,13 +11,13 @@ import { AsyncThunkTypeWord } from "@/enums/asyncThunkType";
 interface WordState {
   word: Word;
   allWords: Word[];
-  wordsForMemoryGame: Word[];
+  wordsForMemoryGame: Word[] | null;
 }
 
 const initialState: WordState = {
   word: {},
   allWords: [],
-  wordsForMemoryGame: [],
+  wordsForMemoryGame: null,
 };
 
 export const wordSlice = createSlice({
