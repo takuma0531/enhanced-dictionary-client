@@ -29,12 +29,14 @@ export default function MemoryGameBoard() {
 
   const finishGame = () => {
     setTimeout(() => {
+      webSocket.disconnect();
       toggleVisibilityOfFinishGameMessageModal.current(true);
     }, 1300);
   };
 
   useEffect(() => {
     if (wordsForMemoryGame.length == 0) return;
+    webSocket.init();
     webSocket.gameStart(wordsForMemoryGame, setWordCards);
     webSocket.onGameFinish(finishGame);
   }, [wordsForMemoryGame]);

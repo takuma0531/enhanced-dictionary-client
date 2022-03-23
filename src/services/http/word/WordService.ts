@@ -48,6 +48,7 @@ class WordService extends BaseHttpService implements IWordService {
       const { data } = await this.axiosApi.get<Word[]>(
         `${this.BASE_ROUTE}/${URL_PATH.USER}/${URL_PATH.MEMORY_GAME}?${QUERY_STRING.NUMBER_OF_PAIRS}=${numberOfPairs}`
       );
+      if (!data) return [];
       return data;
     } catch (err) {
       throw err;

@@ -15,7 +15,6 @@ class WebSocket implements IWebSocket {
 
   public disconnect(): void {
     this._socket?.close();
-    console.log("disconnected");
   }
 
   public gameStart(words: Word[], callback: any): void {
