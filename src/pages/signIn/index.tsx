@@ -5,10 +5,12 @@ import { registerUser, loginUser } from "@/store/features/authSlice";
 import InputField from "@/components/layout/inputField";
 import Button from "@/components/layout/button";
 import {
-  INPUTFEILDNAME,
-  INPUTFIELDTYPE,
-  BUTTONTEXT,
-  FORMTITLE,
+  InputFieldLabel,
+  InputFieldLabelSpecification,
+  InputFieldType,
+  InputFieldName,
+  ButtonText,
+  FormTitle,
 } from "@/enums/formElement";
 import { Colors } from "@/enums/Style";
 
@@ -29,23 +31,23 @@ export default function SignIn() {
   return (
     <SignInContainer className="signIn">
       <FormContainer onSubmit={(e) => handleSubmitting(e)}>
-        <h1>{isSignIn ? FORMTITLE.SIGNIN : FORMTITLE.SIGNUP}</h1>
+        <h1>{isSignIn ? FormTitle.SIGNIN : FormTitle.SIGNUP}</h1>
         <InputField
-          name={INPUTFEILDNAME.EMAIL}
-          type={INPUTFIELDTYPE.EMAIL}
+          name={InputFieldName.EMAIL}
+          type={InputFieldType.EMAIL}
           value={email}
-          label={INPUTFEILDNAME.EMAIL}
+          label={InputFieldLabel.EMAIL}
           onChange={(e) => setEmail(e.target.value)}
         />
         <InputField
-          name={INPUTFEILDNAME.PASSWORD}
-          type={INPUTFIELDTYPE.PASSWORD}
+          name={InputFieldName.PASSWORD}
+          type={InputFieldType.PASSWORD}
           value={password}
-          label={INPUTFEILDNAME.PASSWORD}
+          label={InputFieldLabel.PASSWORD}
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button
-          text={isSignIn ? BUTTONTEXT.SIGNIN : BUTTONTEXT.SIGNUP}
+          text={isSignIn ? ButtonText.SIGNIN : ButtonText.SIGNUP}
           borderRadius={"20px"}
           backgroundColor={Colors.LIGHT_BLUE}
           backgroundColorOnHover={Colors.DEEP_BLUE}
@@ -56,7 +58,7 @@ export default function SignIn() {
         <GuidingTextToSignInOrUp>
           or {""}
           <span onClick={() => toggleIsSignIn(!isSignIn)}>
-            {isSignIn ? BUTTONTEXT.SIGNUP : BUTTONTEXT.SIGNIN}
+            {isSignIn ? ButtonText.SIGNUP : ButtonText.SIGNIN}
           </span>
         </GuidingTextToSignInOrUp>
       </FormContainer>

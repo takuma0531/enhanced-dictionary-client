@@ -7,7 +7,7 @@ import { Word } from "@/typings/models/word";
 import InputField from "@/components/layout/inputField";
 import WordLanguageSwitcher from "./WordLanguageSwitcher";
 import Button from "@/components/layout/button";
-import { INPUTFIELDTYPE, BUTTONTEXT } from "@/enums/formElement";
+import { InputFieldType, ButtonText } from "@/enums/formElement";
 import { Colors } from "@/enums/Style";
 
 export default function WordSearching() {
@@ -42,7 +42,7 @@ export default function WordSearching() {
       <WordSearchinginputFieldContainer>
         <InputField
           isLabelRequired={false}
-          type={INPUTFIELDTYPE.TEXT}
+          type={InputFieldType.TEXT}
           value={word.detectedText || ""}
           isRequired={false}
           onChange={(e) => inputText(e)}
@@ -52,7 +52,7 @@ export default function WordSearching() {
         />
         <Button
           onClick={handleSearching}
-          text={BUTTONTEXT.SEARCH}
+          text={ButtonText.SEARCH}
           fontSize={"0.8rem"}
           border={"none"}
           borderLeft={`solid 1px ${Colors.LIGHT_GRAY}`}

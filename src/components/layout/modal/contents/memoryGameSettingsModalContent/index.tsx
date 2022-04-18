@@ -5,9 +5,9 @@ import { getWordsForMemoryGame, selectWord } from "@/store/features/wordSlice";
 import Select from "@/components/layout/select";
 import Button from "@/components/layout/button";
 import {
-  INPUTFEILDNAME,
-  INPUTFIELDLABELSPECIFICATION,
-  BUTTONTEXT,
+  InputFieldLabel,
+  InputFieldLabelSpecification,
+  ButtonText,
 } from "@/enums/formElement";
 import { Colors } from "@/enums/Style";
 
@@ -60,10 +60,10 @@ export default function MemoryGameSettingsModalContent({
         <div className="select-wrapper">
           <label
             htmlFor={
-              INPUTFIELDLABELSPECIFICATION.NUMBEROFPAIRSINAMEMORYGAMESELECT
+              InputFieldLabelSpecification.NUMBEROFPAIRSINAMEMORYGAMESELECT
             }
           >
-            {INPUTFEILDNAME.NUMBEROFPAIRSINAMEMORYGAME}
+            {InputFieldLabel.NUMBEROFPAIRSINAMEMORYGAME}
           </label>
           <Select
             selectValue={numberOfPairs}
@@ -73,7 +73,7 @@ export default function MemoryGameSettingsModalContent({
           />
         </div>
         <Button
-          text={BUTTONTEXT.CONFIRM}
+          text={ButtonText.CONFIRM}
           color={Colors.YELLOW}
           padding={"5px 10px"}
           border={`outset 1px ${Colors.WHITE}`}
