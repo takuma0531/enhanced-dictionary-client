@@ -1,22 +1,14 @@
-import axios from "axios";
+import translate from "translate";
 import { Word } from "@/typings/models/word";
 
 class TranslationService {
-  private readonly baseUrl = process.env.REACT_APP_TRANSLATION_URL;
-
   public async getTranslatedText(word: Word): Promise<Word> {
     try {
-      const res = await axios.post(
-        `${this.baseUrl}`,
-        {
-          q: word.detectedText,
-          source: word.detectedLanguage,
-          target: word.targetLanguage,
-          format: "text",
-        },
-        { headers: { "Content-Type": "application/json" } }
-      );
-      word.targetText = res.data.translatedText;
+      const translatedText = await translate(word.detectedText!, {
+        from: `${word.detectedLanguage}`,
+        to: `${word.targetLanguage}`,
+      });
+      word.targetText = translatedText;
       return word;
     } catch (err) {
       throw err;

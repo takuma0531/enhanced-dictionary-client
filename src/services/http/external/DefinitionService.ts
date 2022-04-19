@@ -6,6 +6,7 @@ class DefinitionService {
 
   public async getDefinitionOfWord(word: Word): Promise<Word> {
     try {
+      if (word.detectedLanguage != "en") return word;
       const res = await axios.get(
         `${this.baseUrl}/${word.detectedLanguage}/${word.detectedText}`,
         {

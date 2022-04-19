@@ -46,7 +46,9 @@ export default function Home() {
           <div className="resultOfDefinitionInDetectedLanguageWrappper">
             <DictionaryResult
               title="Meaning in Detected Language"
-              text={wordToRender.definition}
+              text={
+                wordToRender.definition || "Currently Only Available In English... Sorry"
+              }
             />
           </div>
         </DictionaryResultSectionWrapperContainer>
