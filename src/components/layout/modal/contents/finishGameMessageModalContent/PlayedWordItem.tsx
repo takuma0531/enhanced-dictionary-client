@@ -21,22 +21,17 @@ export default function PlayedWordItem({ word }: Props) {
   const [isVisible, setIsVisible] = useState(true);
 
   const onUpdateWord = () => {
-    const wordToUpdate = { ...word };
-    wordToUpdate.isMemorized = !word.isMemorized;
-    wordToUpdate.dateMemorized = new Date();
-    dispatch(updateWord(wordToUpdate));
+    dispatch(incrementCountOfWordsPlayed(word));
     setIsVisible(false);
   };
 
   const onRefreshCountOfWordPlayed = () => {
-    if (word.count! <= 5) dispatch(incrementCountOfWordsPlayed(word));
-    else dispatch(refreshCountOfWordPlayed(word.id!));
+    if (word.count! >= 6) dispatch(refreshCountOfWordPlayed(word.id!));
     setIsVisible(false);
   };
 
   useEffect(() => {
     return () => {
-      // TODO: handle rest unselected word
       setIsVisible(true);
     };
   }, []);
