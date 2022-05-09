@@ -46,7 +46,8 @@ export default function MemoryGameSettingsModalContent({
   };
 
   useEffect(() => {
-    if (wordsForMemoryGame === null) return;
+    console.log(wordsForMemoryGame);
+    if (wordsForMemoryGame === null || wordsForMemoryGame.length == 0) return;
     else if (wordsForMemoryGame.length < numberOfPairs)
       openMemoryGameErrorMessageModal();
     else startGame();

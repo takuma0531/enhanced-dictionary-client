@@ -56,7 +56,9 @@ export default function MemoryGameCard({ wordCard }: Props) {
       isMatched={isMatched}
     >
       <div className="back"></div>
-      <div className="front">{wordCard.text}</div>
+      <div className="front">
+        <p>{wordCard.text}</p>
+      </div>
     </MemoryGameCardContainer>
   );
 }
@@ -94,5 +96,15 @@ const MemoryGameCardContainer = styled.div<{
   .front {
     transform: rotateY(180deg);
     background: yellow;
+
+    p {
+      font-size: 1.1rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+    }
   }
 `;
